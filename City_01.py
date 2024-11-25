@@ -2,13 +2,19 @@ from opencage.geocoder import OpenCageGeocode
 
 
 def get_coordinates(city, key):
-    geocoder = OpenCageGeocode(key)
-    query = city
-    results = geocoder.geocode(query)
-    if results:
-        return results[0]['geometry']['lat'], results[0]['geometry']['lng']
-    else:
-        return "Город не найден"
+    """ Получает координаты города, используя библиотеку OpenCage. """
+    try:
+        geocoder = OpenCageGeocode(key)
+        results = geocoder.geocode(city)
+
+        if results:
+            # Возвращает первый результат
+            return results[0]['geometry']['lat'], results[0]['geometry']['lng']
+        else:
+            return "Город не найден"
+    except Exception as e:
+        return f"Общая ошибка: {e}"
+
 
 # Пример использования
 key = '628122f6b49b4fe798d95adad797a116'
