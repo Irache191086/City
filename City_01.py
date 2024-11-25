@@ -18,7 +18,7 @@ def get_coordinates(city, key):
 
 # Пример использования
 key = '628122f6b49b4fe798d95adad797a116'
-city = 'Москва'
+city = 'London'
 coordinates = get_coordinates(city, key)
 print(f"Координаты города {city}: {coordinates}")
 
